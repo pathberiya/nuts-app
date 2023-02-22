@@ -1,6 +1,6 @@
 import ballerina/http;
 
-service /product on new http:Listener(9000) {
+service /product on new http:Listener(9090) {
 
     resource function get review(string userId) returns Follow[]|error {
         return getFollows(userId);
