@@ -58,11 +58,11 @@ service /catalog on new graphql:Listener(9000) {
     }
 
     remote function addProductItem(string? name, string? description, string? image, 
-    decimal? price, string? variation) returns int {
+    decimal? price, string? variation) returns int|error {
 
         log:printInfo("function is called ###########");
-        int|error ret = addProductItem(name, description, image, price, variation);
-        return ret is error ? -1 : ret;
+        return addProductItem(name, description, image, price, variation);
+
     }
 
 }

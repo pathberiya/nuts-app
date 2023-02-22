@@ -102,7 +102,7 @@ function addProductItem(string? name, string? description, string? image,
 
     sql:ExecutionResult finalResult = check dbClient->execute(
         `INSERT INTO product(name, description, image, sku, price, variation) VALUES 
-        (${name},${description},${image},${uuid1String}, ${price}$, ${variation})`);
+        (${name},${description},${image},${uuid1String}, ${price}, ${variation})`);
     return <int>finalResult.lastInsertId;
 
 }
