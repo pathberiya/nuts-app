@@ -13,7 +13,7 @@ type Database record {|
 |};
 
 type Follow record {|
-    string product_id;
+    string id;
     string sku;
 |};
 
