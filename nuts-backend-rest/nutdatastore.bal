@@ -13,10 +13,8 @@ type Database record {|
 |};
 
 type Follow record {|
-    string id;
-    string user_id;
     string product_id;
-    boolean follow;
+    string sku;
 |};
 
 
@@ -32,7 +30,8 @@ function getFollows(string? userId) returns Follow []|error {
 
     Follow[] follows = [];
 
-    stream<Follow, error?>  resultStream = dbClient->query(`select  * from product_review where user_id=${userId}`);
+    stream<Follow, error?>  resultStream = dbClient->query(`select product.id, product.sku from product where id = 
+    (select distinct  product_id from product_review where user_id=${userId})`);
 
     check from Follow employee in resultStream
         do {
